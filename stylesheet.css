@@ -1,0 +1,254 @@
+:root {
+  font-size: 16px;
+  font-family: "Radio Canada", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  --text-primary: black;
+  --text-secondary: white;
+  --bg-primary: #23235e;
+  --bg-secondary: #152568;
+  --transition-speed: 1s;
+  --drawer-color: #0ea599;
+  --drawer-width: clamp(210px, 22vw, 325px);
+  --nav-bg-1: #f8f8f8;
+  --nav-color-1: #c9c9c9;
+  --nav-color-2: #62daff6e;
+  --blue-1: #084c61;
+  --github-avatar: url("https://github.com/Fadswaffer.png");
+  --github-avatar2: url("https://github.com/alisha.png");
+  --github-avatar3: url("https://github.com/bob.png");
+  --github-avatar4: url("https://github.com/amy.png");
+  --github-avatar5: url("https://github.com/alice.png");
+  --content-gray: rgb(225, 225, 225);
+  --transition-notDrawer: margin-left 0.5s ease-in;
+  --transition-drawer: width 0.5s ease-in;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "drawer nav nav nav"
+    "drawer content content content";
+  grid-template-rows: 0.75fr 4 fr;
+  grid-template-columns: 5rem 1fr 1fr 1fr;
+}
+
+.drawer {
+  grid-area: drawer;
+  background-color: var(--drawer-color);
+  width: 5rem;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden;
+  transition: var(--transition-drawer);
+}
+.drawer:hover {
+  width: var(--drawer-width);
+}
+.menuItem > h1 {
+  display: none;
+  margin-left: 7%;
+}
+.drawer:hover > .menuItem > h1 {
+  display: inline;
+}
+.drawer:hover ~ .navbar,
+.drawer:hover ~ .content {
+  margin-left: calc(var(--drawer-width) - 5rem);
+}
+.menuItem {
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.menuItem > * {
+  cursor: pointer;
+}
+.drawer > div:not(:first-child) > * {
+  padding: 1vw 0.1vw 0.1vw 0.1vw;
+  font-size: calc(20px + 0.2vw);
+  padding-left: 20px;
+}
+.drawer > div:not(:first-child) > img {
+  width: calc(20px + 0.5vw);
+  width: calc(20px + 0.5vw);
+}
+.drawer > div:nth-child(8) {
+  padding-top: 60px;
+}
+.dashboard {
+  font-size: clamp(8px, calc(0.9vw + 0.5rem), 50px);
+}
+.dashboard img {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: calc(40px + 0.65vw);
+  height: calc(40px + 0.65vw);
+  padding-left: 15px;
+  padding-top: 10px;
+}
+.navbar {
+  grid-area: nav;
+  transition: var(--transition-notDrawer);
+  background-color: var(--nav-bg-1);
+  padding: 1.5rem 3rem;
+  position: sticky;
+  border-bottom: 2px solid rgb(211, 211, 211);
+  top: 0;
+}
+.topNav {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  margin-bottom: 2.5rem;
+}
+.search {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  width: 100%;
+}
+.search > input {
+  display: inline-block;
+  border: 0;
+  background-color: var(--nav-color-1);
+  padding: 0.4rem 1.5rem;
+  outline-color: var(--blue-1);
+  margin-left: 1.25rem;
+  margin-right: 20px;
+  border-radius: 8px;
+  width: min(80%, 600px);
+  margin-right: 20px;
+}
+.navbar .account {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.5rem;
+
+  font-weight: 900;
+}
+
+.github-avatar {
+  background: var(--github-avatar) center center / cover no-repeat;
+  border-radius: 50%;
+}
+.account .github-avatar {
+  margin: 0 1rem 0 2.5rem;
+  height: 40px;
+  width: 40px;
+}
+
+.img {
+  cursor: pointer;
+}
+
+.bottomNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.profile .github-avatar {
+  width: 80px;
+  height: 80px;
+}
+
+.greeting {
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.profile .name {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  background-color: var(--drawer-color);
+  color: var(--text-secondary);
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem;
+  font-size: 25px;
+  border: 2px solid green;
+}
+
+.content {
+  grid-area: content;
+  transition: var(--transition-notDrawer);
+  background-color: var(--content-gray);
+  display: grid;
+  padding: 2rem;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: min-content 1fr;
+  gap: 2rem;
+  grid-template-areas:
+    "projects announcements"
+    "projects trending";
+}
+.card {
+  background-color: rgb(194, 226, 11);
+  padding: 2rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 10px 15px -3px rgba(14, 13, 13, 0.1),
+    0 4px 6px -4px rgba(29, 28, 28, 0.1);
+}
+
+.projects {
+  grid-area: projects;
+}
+.projects .cards {
+  display: grid;
+  background-color: var(--nav-color-2);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 2rem;
+  border-left: yellow;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.profile .card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.projects .card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.projects .icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding-bottom: 10px;
+  padding-right: 5px;
+}
+.trending {
+  grid-area: trending;
+}
+.announcements {
+  grid-area: announcements;
+}
+
+.announcement {
+  width: 25ch;
+  padding: 1rem 0;
+}
