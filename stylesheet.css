@@ -30,7 +30,7 @@ body {
   grid-template-areas:
     "drawer nav nav nav"
     "drawer content content content";
-  grid-template-rows: 0.75fr 4 fr;
+  grid-template-rows: 0.75fr 4fr;
   grid-template-columns: 5rem 1fr 1fr 1fr;
 }
 
